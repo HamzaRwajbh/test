@@ -1,0 +1,22 @@
+<Collection>
+    <item>
+        <id>1</id>
+        <name>Hamza</name>
+        <course>SWE</course>
+    </item>
+    <item>
+        <id>2</id>
+        <name>Zaid</name>
+        <course>SWE</course>
+    </item>
+    <item>
+        <id>3</id>
+        <name>Medo</name>
+        <course>CS</course>
+    </item>
+    <item>
+        <id>4</id>
+        <name>Hadeel</name>
+        <course>CIM</course>
+    </item>
+</Collection>
