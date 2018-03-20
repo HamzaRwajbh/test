@@ -1,6 +1,7 @@
 package com.mobilenoc.springboot.service;
 
 import com.mobilenoc.springboot.entities.Course;
+import com.mobilenoc.springboot.entities.Student;
 import com.mobilenoc.springboot.repo.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,13 +15,13 @@ public class CourseService {
     @Autowired
     private CourseRepository courseRepository;
 
-    public List<Course> getAllCourse() {
-        List<Course> students = new ArrayList<>() ;
-        courseRepository.findAll().forEach(students::add);
-        return students ;
+    public List<Course> getAllCourse(Integer id) {
+        List<Course> courses = new ArrayList<>() ;
+        courseRepository.findByStudentId(id).forEach(courses::add);
+        return courses ;
     }
 
-    public Course getCoursetById(Integer id){
+    public Course getCourseById(Integer id){
         return courseRepository.findOne(id);
     }
 
@@ -28,8 +29,11 @@ public class CourseService {
         courseRepository.delete(id);
     }
 
-    public void addCourse(Course student) {
-        courseRepository.save(student);
+    public void addCourse(Course course) {
+        courseRepository.save(course);
     }
 
+    public void updateCourse(Course course) {
+        courseRepository.save(course);
+    }
 }

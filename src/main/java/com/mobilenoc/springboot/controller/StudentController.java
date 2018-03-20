@@ -26,27 +26,25 @@ public class StudentController {
         return new ResponseEntity(studentService.getAllStudents() , HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/{id}" , method = RequestMethod.DELETE)
-    public void removeStudentById(@PathVariable("id") int id){
-        studentService.removeStudentById(id);
+    @RequestMapping(value = "/{name}" , method = RequestMethod.GET)
+    public List<Student> getStudentByName(@PathVariable("name") String name){
+        return studentService.getStudentByName(name);
     }
 
     @RequestMapping(method = RequestMethod.POST )
     public void addstudent(
             @RequestParam("id") int id ,
-            @RequestParam("name") String name ,
-            @RequestParam("course") String course) {
-        studentService.addStudent(new Student(id,name,course)) ;
+            @RequestParam("name") String name ){
+        studentService.addStudent(new Student(id,name)) ;
     }
 
-    @RequestMapping(value = "/{name}" , method = RequestMethod.GET)
-    public List<Student> getStudentByName(@PathVariable("name") String name){
-        System.out.println(name);
-        return studentService.getStudentByName(name);
+    @RequestMapping(value = "/{id}" , method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void changeCourse(@PathVariable("id") String Id , @RequestBody Student student ){
+        studentService.updateStudent(student);
     }
 
-    @RequestMapping(value = "/{name}" , method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public boolean changeCourse(@PathVariable("name") String studentName , @RequestBody Student student ){
-        return true;
+    @RequestMapping(value = "/{id}" , method = RequestMethod.DELETE)
+    public void removeStudentById(@PathVariable("id") int id){
+        studentService.removeStudentById(id);
     }
 }

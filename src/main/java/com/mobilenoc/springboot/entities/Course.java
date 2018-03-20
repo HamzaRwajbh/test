@@ -18,10 +18,9 @@ public class Course {
     public Course() {
     }
 
-    public Course(Integer id, String name , Integer studentId) {
+    public Course(Integer id, String name ) {
         this.id = id;
         this.name = name;
-        this.student = new Student(studentId , "");
     }
 
     public Integer getId() {

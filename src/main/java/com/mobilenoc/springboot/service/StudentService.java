@@ -23,16 +23,20 @@ public class StudentService {
         return studentRepository.findOne(id);
     }
 
-    public void removeStudentById(Integer id) {
-        studentRepository.delete(id);
+    public List<Student> getStudentByName(String name){
+        return studentRepository.findByName(name);
+
     }
 
     public void addStudent(Student student) {
         studentRepository.save(student);
     }
 
-    public List<Student> getStudentByName(String name){
-        return studentRepository.findByName(name);
+    public void updateStudent(Student student){
+        studentRepository.save(student);
+    }
 
+    public void removeStudentById(Integer id) {
+        studentRepository.delete(id);
     }
 }
